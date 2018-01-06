@@ -19,7 +19,7 @@ exports.up = function (db) {
 		id     : { type : "int", primaryKey : true, autoIncrement : true },
 		guid   : { type : "string", length : 24, unique : true, notNull : true },
 		dt     : { type : "datetime" },
-		active : { type : "boolean", default : true }
+		active : { type : "boolean", defaultValue : true }
 	});
 };
 

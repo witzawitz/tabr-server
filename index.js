@@ -29,6 +29,14 @@ var user = {
 				throw error;
 		});
 	},
+	find          : function (guid) {
+		var found = false;
+		db.query("SELECT * FROM `user` WHERE `active`=1 AND `guid`=?", [ guid ], function (error, results, fields) {
+			if (!error && results.length === 1)
+				console.log("123");
+		});
+		console.log(found);
+	},
 	_generateGuid : function () {
 		user.guid = randomstring.generate(24, 'hex');
 		db.query("SELECT * FROM `user` WHERE `guid`=?", [ user.guid ], function (error, results, fields) {
@@ -37,6 +45,9 @@ var user = {
 			if (results.length > 0)
 				user._generateGuid();
 		});
+	},
+	_setGuid      : function (guid) {
+		this.guid = guid;
 	}
 };
 
@@ -44,13 +55,18 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended : false }));
 
 app.get('/', function (req, res) {
-	res.send('Hello World123')
+	res.send('')
 });
 
 app.post('/user', function (req, res) {
-	var data = req.body;
 	user.create();
 	res.send(user.guid);
+});
+
+app.post('/screenshot', function (req, res) {
+	var data = req.body;
+	user.find(data.user);
+	res.send(user);
 });
 
 app.listen(3020);
