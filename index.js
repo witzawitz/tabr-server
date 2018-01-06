@@ -30,12 +30,10 @@ var user = {
 		});
 	},
 	find          : function (guid) {
-		var found = false;
 		db.query("SELECT * FROM `user` WHERE `active`=1 AND `guid`=?", [ guid ], function (error, results, fields) {
 			if (!error && results.length === 1)
-				console.log("123");
+				user.guid = guid;
 		});
-		console.log(found);
 	},
 	_generateGuid : function () {
 		user.guid = randomstring.generate(24, 'hex');
@@ -45,9 +43,6 @@ var user = {
 			if (results.length > 0)
 				user._generateGuid();
 		});
-	},
-	_setGuid      : function (guid) {
-		this.guid = guid;
 	}
 };
 
