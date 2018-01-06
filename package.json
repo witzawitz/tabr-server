@@ -1,0 +1,31 @@
+{
+  "name": "tabr-server",
+  "version": "0.1.0",
+  "description": "Server with screenshot generation for Firefox Tabr extension.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "pm2 start ./index.js --name tabr",
+    "dev": "pm2 start ./index.js --name tabr --watch --no-daemon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/witzawitz/tabr-server.git"
+  },
+  "author": "witzawitz <witzawitz@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/witzawitz/tabr-server/issues"
+  },
+  "homepage": "https://github.com/witzawitz/tabr-server#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "dateformat": "^3.0.2",
+    "db-migrate": "^0.10.2",
+    "db-migrate-mysql": "^1.1.10",
+    "express": "^4.16.2",
+    "http": "0.0.0",
+    "mysql": "^2.15.0",
+    "randomstring": "^1.1.5"
+  }
+}

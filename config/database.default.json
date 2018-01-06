@@ -1,0 +1,11 @@
+{
+	"defaultEnv": "db",
+	"db": {
+		"driver": "mysql",
+		"host": "localhost",
+		"user": "test",
+		"password": "123456",
+		"database": "db_name",
+		"multipleStatements": true
+	}
+}
